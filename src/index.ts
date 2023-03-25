@@ -4,9 +4,10 @@ interface User {
     id ?: string,
     first_name ?: string,
     email ?: string,
+    is_valid ?: ({data=329})=> void,
 }
 
-interface HttpRequest {
+type HttpRequest ={
     user: User,
     isAuthenticated: boolean,
     data?: object,
@@ -16,12 +17,16 @@ const getRequest = (req: HttpRequest)=>{
     console.log(req.user.email)
 }
 
-const request = {
+const request:HttpRequest = {
     user: {
-        username: "safwan"
+        username: "safwan",
+        is_valid:({data})=>{
+            console.log('====================================');
+            console.log(data);
+            console.log('====================================');
+        }
     },
     isAuthenticated: false,
-    data: {}
 }
 
 getRequest(request)

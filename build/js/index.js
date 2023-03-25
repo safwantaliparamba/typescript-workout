@@ -4,9 +4,13 @@ const getRequest = (req) => {
 };
 const request = {
     user: {
-        username: "safwan"
+        username: "safwan",
+        is_valid: ({ data }) => {
+            console.log('====================================');
+            console.log(data);
+            console.log('====================================');
+        }
     },
     isAuthenticated: false,
-    data: {}
 };
 getRequest(request);
